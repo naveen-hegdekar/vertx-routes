@@ -55,11 +55,11 @@ public class Server extends AbstractVerticle {
       HttpMethod method = HttpMethod.valueOf(message.getString("method"));
       router.route(method, message.getString("url"))
         .order(1)
-        .handler(cxt -> cxt.json(message.getJsonObject("response")));
+        .handler(cxt -> cxt.json(new JsonObject().put("message", "This works..!!")));
       LOGGER.debug("==After== Router:{}, Number of routes:{}", router, router.getRoutes().size());
     });
 
-    vertx.createHttpServer().requestHandler(router).listen(handler -> {
+    vertx.createHttpServer().requestHandler(router).listen(8080, handler -> {
       if (handler.succeeded()) {
         LOGGER.info("server started on http://0.0.0.0:{}", handler.result().actualPort());
         startPromise.complete();

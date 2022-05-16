@@ -9,7 +9,7 @@
   </Appenders>
   <Loggers>
     <!-- Root logger configuration-->
-    <Root level="TRACE">
+    <Root level="INFO">
       <AppenderRef ref="Console"/>
     </Root>
   </Loggers>
