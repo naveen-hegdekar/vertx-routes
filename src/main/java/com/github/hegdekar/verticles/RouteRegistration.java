@@ -7,7 +7,7 @@ import io.vertx.core.json.JsonObject;
 public class RouteRegistration extends AbstractVerticle {
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
-    vertx.eventBus().send("REGISTER_ROUTE",
+    vertx.eventBus().publish("REGISTER_ROUTE",
       new JsonObject()
         .put("url", "/test-route")
         .put("method", "GET")
