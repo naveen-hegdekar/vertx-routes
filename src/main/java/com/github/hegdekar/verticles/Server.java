@@ -19,11 +19,10 @@ import java.util.stream.Stream;
 
 public class Server extends AbstractVerticle {
   private static final Logger LOGGER = LogManager.getLogger(Server.class);
-  private static Router router;
 
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
-    router = Router.router(vertx);
+    Router router = Router.router(vertx);
 
     Set<String> allowedHeadersSet = new HashSet<>(List.of("GET", "PUT", "POST", "DELETE", "OPTIONS", "PATCH"));
     Set<HttpMethod> allowedMethodsSet = Stream
